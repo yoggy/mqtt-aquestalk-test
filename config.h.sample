@@ -1,0 +1,17 @@
+// Wifi config
+const char *wifi_ssid      = "wifi ssid";
+const char *wifi_password  = "wifi password";
+
+const char *mqtt_host    = "iot.eclipse.org";
+const int  mqtt_port       = 1883;
+
+// MQTT config
+const char *mqtt_client_id = "mqtt-aquestalk-01";
+const bool mqtt_use_auth   = false;
+const char *mqtt_username  = "username";
+const char *mqtt_password  = "passwowrd";
+
+const char *mqtt_subscribe_topic = "aquestalk/0001";
+
+// AquesTalk License Key
+const char* aquestalk_licencekey = "XXX-XXX-XXX"; 
