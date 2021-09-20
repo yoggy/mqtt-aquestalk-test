@@ -16,6 +16,7 @@ static char speak_buf[256];
 void setup()
 {
   Serial.begin(115200);
+
   M5.begin(true, true, true, true);
   M5.Lcd.fillScreen(TFT_BLACK);
   M5.Lcd.setTextColor(TFT_WHITE);
@@ -26,6 +27,12 @@ void setup()
   M5.Axp.SetLcdVoltage(2600);
   M5.Axp.SetLed(false); 
   M5.Axp.SetSpkEnable(true);
+
+  // print MAC Address
+  uint8_t mac[6];
+  esp_efuse_mac_get_default(mac);
+  Serial.printf("MAC Address = %02X:%02X:%02X:%02X:%02X:%02X", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+  Serial.println();
 
   // Wifi
   WiFi.mode(WIFI_MODE_STA);
@@ -81,7 +88,7 @@ void loop()
   mqtt_client.loop();
 
   if (M5.BtnA.wasPressed()) {
-    TTS.playK("新しいライブラリは、漢字テキストから音声合成ができるようになりました。", 100);
+    TTS.playK("チェック、ワン、ツー、ワン、ツー", 100);
   }
 
   if (speak_ready_flag) {
